@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <PromoBrand></PromoBrand>
+    <Categories></Categories>
+    <TradeSection></TradeSection>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+
+// eslint-disable-next-line import/extensions
+import PromoBrand from '@/blocks/PromoBrand';
+// eslint-disable-next-line import/extensions
+import Categories from '@/blocks/Categories';
+// eslint-disable-next-line import/extensions
+import TradeSection from '@/blocks/TradeSection';
 
 export default {
-  name: 'Home',
   components: {
-    HelloWorld,
+    TradeSection,
+    Categories,
+    PromoBrand,
   },
 };
 </script>
