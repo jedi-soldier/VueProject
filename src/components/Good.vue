@@ -1,10 +1,12 @@
 <template>
   <div class="tradeIndex_product">
-    {{good.product_image}}<div class="tradeIndex_product__buyButton">
+    <img
+      :src=" require('../assets/images/' + good_data.product_image) "
+      alt="product"><div class="tradeIndex_product__buyButton">
     <button><img src="../assets/images/basket.svg" alt="basket">Add to&nbsp;Cart</button> </div>
-    <div class="tradeIndex_product__info"> <a href="#">{{good.product_name}}</a>
+    <div class="tradeIndex_product__info"> <a href="#">{{good_data.product_name}}</a>
         <router-link to="/catalog/1234"><div class="tradeIndex_product__info__price">
-          <p> {{good.price}} $</p></div>
+          <p> {{good_data.price}} $</p></div>
         </router-link>
       </div>
   </div>
@@ -13,7 +15,14 @@
 <script>
 export default {
   name: 'Good',
-  props: ['good'],
+  props: {
+    good_data: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
 };
 </script>
 

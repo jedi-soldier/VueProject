@@ -6,7 +6,11 @@
         <p>Shop for items based on&nbsp;what we&nbsp;featured in&nbsp;this week</p>
       </header>
       <div class="tradeIndex_products">
-        <Good v-bind:good="good" v-for='good in goods' :key="good.id_product" ></Good>
+        <Good
+          v-for='good in goods'
+          :key="good.id_product"
+          v-bind:good_data="good">
+        </Good>
       </div>
       <div class="tradeIndex_link">
         <router-link to="/catalog">
@@ -24,54 +28,55 @@ import Good from '@/components/Good';
 export default {
   name: 'TradeSection',
   components: { Good },
+  props: {},
   data() {
     return {
       goods: [
         {
-          id_product: 1,
-          product_image: '/img/product2.jpg',
+          id_product: '1',
+          product_image: 'product1.jpg',
           product_name: 'Mango People T-shir 1',
           price: 51,
         },
         {
-          id_product: 2,
-          product_image: '<img src="../assets/images/product2.jpg" alt="product">',
+          id_product: '2',
+          product_image: 'product2.jpg',
           product_name: 'Mango People T-shir 2',
           price: 52,
         },
         {
-          id_product: 3,
-          product_image: '../assets/images/product3.jpg',
+          id_product: '3',
+          product_image: 'product3.jpg',
           product_name: 'Mango People T-shir 3',
           price: 53,
         },
         {
-          id_product: 4,
-          product_image: '../assets/images/product4.jpg',
+          id_product: '4',
+          product_image: 'product4.jpg',
           product_name: 'Mango People T-shir 4',
           price: 54,
         },
         {
-          id_product: 5,
-          product_image: '../assets/images/product5.jpg',
+          id_product: '5',
+          product_image: 'product5.jpg',
           product_name: 'Mango People T-shir 5',
           price: 55,
         },
         {
-          id_product: 6,
-          product_image: '../assets/images/product6.jpg',
+          id_product: '6',
+          product_image: 'product6.jpg',
           product_name: 'Mango People T-shir 6',
           price: 56,
         },
         {
-          id_product: 7,
-          product_image: '../assets/images/product7.jpg',
+          id_product: '7',
+          product_image: 'product7.jpg',
           product_name: 'Mango People T-shir 7',
           price: 57,
         },
         {
-          id_product: 8,
-          product_image: '../assets/images/product8.jpg',
+          id_product: '8',
+          product_image: 'product8.jpg',
           product_name: 'Mango People T-shir 8',
           price: 58,
         },
@@ -132,7 +137,7 @@ export default {
   width: inherit;
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 100px;
 }
 .tradeIndex_link a {
   width: 212px;
