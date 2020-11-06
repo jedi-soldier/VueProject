@@ -3,12 +3,12 @@
     <Header></Header>
     <nav class="topNav">
       <router-link to="/">Home</router-link>
-      <router-link to="/about">Man</router-link>
-      <router-link to="/">Women</router-link>
-      <router-link to="/about">Kids</router-link>
-      <router-link to="/">Accoseriese</router-link>
-      <router-link to="/about">Featured</router-link>
-      <router-link to="/about">Hot Deals</router-link>
+      <router-link to="/Catalog">Man</router-link>
+      <router-link to="/Catalog">Women</router-link>
+      <router-link to="/Catalog">Kids</router-link>
+      <router-link to="/Checkout">Accoseriese</router-link>
+      <router-link to="/Checkout">Featured</router-link>
+      <router-link to="/Checkout">Hot Deals</router-link>
     </nav>
     <router-view/>
     <Subscriber></Subscriber>

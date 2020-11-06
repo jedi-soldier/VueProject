@@ -11,9 +11,9 @@ const routes = [
     component: Home,
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/About.vue'),
+    path: '/checkout',
+    name: 'Checkout',
+    component: () => import('../views/Checkout.vue'),
   },
   {
     path: '/catalog',
@@ -26,8 +26,8 @@ const routes = [
     component: () => import('../views/BigCart.vue'),
   },
   {
-    path: '/cart/:id',
-    name: 'Good',
+    path: '/catalog/:id',
+    name: 'Gooditem',
     component: () => import('../views/Gooditem.vue'),
   },
 ];

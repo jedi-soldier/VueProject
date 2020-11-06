@@ -1,6 +1,6 @@
 <template>
   <div class="tradeIndex_product">
-    <img :src="/good.product_image/" alt="image"><div class="tradeIndex_product__buyButton">
+    {{good.product_image}}<div class="tradeIndex_product__buyButton">
     <button><img src="../assets/images/basket.svg" alt="basket">Add to&nbsp;Cart</button> </div>
     <div class="tradeIndex_product__info"> <a href="#">{{good.product_name}}</a>
         <router-link to="/catalog/1234"><div class="tradeIndex_product__info__price">

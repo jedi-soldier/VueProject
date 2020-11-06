@@ -35,7 +35,7 @@ export default {
         },
         {
           id_product: 2,
-          product_image: '../assets/images/product2.jpg',
+          product_image: '<img src="../assets/images/product2.jpg" alt="product">',
           product_name: 'Mango People T-shir 2',
           price: 52,
         },
@@ -147,4 +147,8 @@ export default {
   text-align: center;
   text-decoration: none;
 }
+.tradeIndex_link a:hover {
+  color: black;
+}
+
 </style>

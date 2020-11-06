@@ -10,9 +10,9 @@
 
 <script>
 // eslint-disable-next-line import/extensions
-import Sub from '@/blocks/Sub';
+import Sub from '@/components/Sub';
 // eslint-disable-next-line import/extensions
-import Review from '@/blocks/Review';
+import Review from '@/components/Review';
 
 export default {
   name: 'Subscriber',
@@ -185,6 +185,9 @@ export default {
   border: none;
   color: white;
   cursor: pointer;
+}
+.subscribeForm button:hover {
+  color: black;
 }
 @media (max-width: 445px) {
   .subscribeForm button {
