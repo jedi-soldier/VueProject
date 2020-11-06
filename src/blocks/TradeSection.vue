@@ -7,9 +7,10 @@
       </header>
       <div class="tradeIndex_products">
         <Good
-          v-for='good in goods'
+          v-for='good in PRODUCTS'
           :key="good.id_product"
-          v-bind:good_data="good">
+          v-bind:good_data="good"
+          @addToCart="addToCart">
         </Good>
       </div>
       <div class="tradeIndex_link">
@@ -24,64 +25,33 @@
 <script>
 // eslint-disable-next-line import/extensions
 import Good from '@/components/Good';
+// eslint-disable-next-line no-unused-vars
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'TradeSection',
   components: { Good },
   props: {},
+  computed: {
+    ...mapGetters([
+      'PRODUCTS',
+    ]),
+  },
   data() {
     return {
-      goods: [
-        {
-          id_product: '1',
-          product_image: 'product1.jpg',
-          product_name: 'Mango People T-shir 1',
-          price: 51,
-        },
-        {
-          id_product: '2',
-          product_image: 'product2.jpg',
-          product_name: 'Mango People T-shir 2',
-          price: 52,
-        },
-        {
-          id_product: '3',
-          product_image: 'product3.jpg',
-          product_name: 'Mango People T-shir 3',
-          price: 53,
-        },
-        {
-          id_product: '4',
-          product_image: 'product4.jpg',
-          product_name: 'Mango People T-shir 4',
-          price: 54,
-        },
-        {
-          id_product: '5',
-          product_image: 'product5.jpg',
-          product_name: 'Mango People T-shir 5',
-          price: 55,
-        },
-        {
-          id_product: '6',
-          product_image: 'product6.jpg',
-          product_name: 'Mango People T-shir 6',
-          price: 56,
-        },
-        {
-          id_product: '7',
-          product_image: 'product7.jpg',
-          product_name: 'Mango People T-shir 7',
-          price: 57,
-        },
-        {
-          id_product: '8',
-          product_image: 'product8.jpg',
-          product_name: 'Mango People T-shir 8',
-          price: 58,
-        },
-      ],
     };
+  },
+  methods: {
+    ...mapActions([
+      'fetchGoodData',
+      'cartAdd',
+    ]),
+    addToCart(data) {
+      this.cartAdd(data);
+    },
+  },
+  mounted() {
+    this.fetchGoodData();
   },
 };
 </script>

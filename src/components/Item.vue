@@ -1,6 +1,6 @@
 <template>
   <div class="product">
-    <img src="../assets/images/p_i_1.png" alt="product">
+    <img src="../assets/images/product10.jpg" alt="product">
     <div class="productName">
       Mango People T-shirt
     </div>

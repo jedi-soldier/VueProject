@@ -3,7 +3,10 @@
     <img
       :src=" require('../assets/images/' + good_data.product_image) "
       alt="product"><div class="tradeIndex_product__buyButton">
-    <button><img src="../assets/images/basket.svg" alt="basket">Add to&nbsp;Cart</button> </div>
+    <button @click="addToCart">
+      <img src="../assets/images/basket.svg" alt="basket">Add to&nbsp;Cart
+    </button>
+  </div>
     <div class="tradeIndex_product__info"> <a href="#">{{good_data.product_name}}</a>
         <router-link to="/catalog/1234"><div class="tradeIndex_product__info__price">
           <p> {{good_data.price}} $</p></div>
@@ -21,6 +24,11 @@ export default {
       default() {
         return {};
       },
+    },
+  },
+  methods: {
+    addToCart() {
+      this.$emit('addToCart', this.good_data);
     },
   },
 };

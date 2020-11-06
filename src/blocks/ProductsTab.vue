@@ -12,8 +12,12 @@
           </div>
           <SortName></SortName>
           <div class="products">
-            <Good></Good>
-            <Good></Good>
+            <Good
+              v-for='good in PRODUCTS'
+              :key="good.id_product"
+              v-bind:good_data="good"
+              @addToCart="addToCart">
+            </Good>
           </div>
           <Pagination></Pagination>
         </div>
@@ -36,6 +40,8 @@ import SortName from '@/components/SortName';
 import Good from '@/components/Good';
 // eslint-disable-next-line import/extensions
 import Pagination from '@/components/Pagination';
+// eslint-disable-next-line no-unused-vars
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'ProductsTab',
@@ -47,6 +53,27 @@ export default {
     SortSize,
     SortTrend,
     Accordeon,
+  },
+  computed: {
+    ...mapGetters([
+      'PRODUCTS',
+    ]),
+  },
+  data() {
+    return {
+    };
+  },
+  methods: {
+    ...mapActions([
+      'fetchGoodData',
+      'cartAdd',
+    ]),
+    addToCart(data) {
+      this.cartAdd(data);
+    },
+  },
+  mounted() {
+    this.fetchGoodData();
   },
 };
 </script>
@@ -62,6 +89,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 100px;
 }
 
 .productsContainer {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Arrivals></Arrivals>
-    <Cartwrap></Cartwrap>
+    <Cartwrap :cart_data="CART"></Cartwrap>
     <Purchase></Purchase>
   </div>
 </template>
@@ -13,10 +13,16 @@ import Arrivals from '@/blocks/Arrivals';
 import Cartwrap from '@/blocks/Cartwrap';
 // eslint-disable-next-line import/extensions
 import Purchase from '@/blocks/Purchase';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'BigCart',
   components: { Purchase, Cartwrap, Arrivals },
+  computed: {
+    ...mapGetters([
+      'CART',
+    ]),
+  },
 };
 </script>
 

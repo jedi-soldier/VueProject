@@ -1,15 +1,17 @@
 <template>
   <div class="prodwrap">
     <div class="productInCart">
-      <div class="productInCart_image"><img src="../assets/images/Layer_43.jpg" alt="product"></div>
+      <div class="productInCart_image">
+        <img :src="require('../assets/images/' + cartItemDat.product_image)" alt="Some image">
+      </div>
       <div class="productInCart_info">
-        <div class="productInCart_name">Mango People T-shirt</div><br>
+        <div class="productInCart_name">{{cartItemDat.product_name}}</div><br>
        <div class="productInCart_description">Color: <span>Red</span><br>Size:<span>Xll</span></div>
       </div>
     </div>
     <div class="smallProductStats">
       <div class="cartHeader_text">unite Price</div>
-      <div class="productInCart_stats_price">$150</div>
+      <div class="productInCart_stats_price">${{cartItemDat.price}}</div>
       <div class="cartHeader_text">Quantity</div>
       <div class="productInCart_stats_volume">2</div>
       <div class="cartHeader_text">shipping</div>
@@ -20,11 +22,13 @@
       <div class="productInCart_delete"><i class="fa fa-times" aria-hidden="true"></i>
       </div>
     </div>
-    <div class="productInCart_stats_price bigProductStats">$150</div>
-    <div class="productInCart_stats_volume bigProductStats">2</div>
+    <div class="productInCart_stats_price bigProductStats">${{cartItemDat.price}}</div>
+    <div class="productInCart_stats_volume bigProductStats">{{cartItemDat.quant}}</div>
     <div class="productInCart_stats_shipping bigProductStats">free</div>
     <div class="productInCart_stats_sum bigProductStats">$300</div>
-    <div class="productInCart_delete bigProductStats"><i class="fa fa-times" aria-hidden="true"></i>
+    <div
+      class="productInCart_delete bigProductStats"
+      @click="deleteFromCart"><i class="fa fa-times" aria-hidden="true"></i>
     </div>
   </div>
 </template>
@@ -33,6 +37,22 @@
 
 export default {
   name: 'Cartproduct',
+  props: {
+    cartItemDat: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
+  mounted() {
+    this.$set(this.cartItemDat, 'quant', 1);
+  },
+  methods: {
+    deleteFromCart() {
+      this.$emit('deleteFromCart');
+    },
+  },
 };
 </script>
 
@@ -57,6 +77,11 @@ export default {
   display: flex;
   justify-content: flex-start;
 }
+.productInCart_image > img {
+  width: 100px;
+  height: inherit;
+}
+
 .smallProductStats {
   display: none;
 }

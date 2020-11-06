@@ -9,7 +9,12 @@
         <div class="cartHeader_text bigProductStats">Subtotal</div>
         <div class="cartHeader_text bigProductStats">ACTION</div>
       </div>
-      <Cartproduct></Cartproduct>
+      <Cartproduct
+        v-for='(cartItem, index) in cart_data'
+        :key="cartItem.id_product"
+        :cart-item-dat="cartItem"
+        @deleteFromCart="deleteFromCart(index)">
+      </Cartproduct>
       <div class="productInCart_buttons">
         <button class="productInCart_leftButton">cLEAR SHOPPING CART</button>
         <button class="productInCart_rightButton">cONTINUE sHOPPING</button>
@@ -23,9 +28,34 @@
 // eslint-disable-next-line import/extensions
 import Cartproduct from '@/components/Cartproduct';
 
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'Cartwrap',
   components: { Cartproduct },
+  props: {
+    cart_data: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
+
+  computed: {
+    ...mapGetters([
+      'CART',
+    ]),
+  },
+  methods: {
+    ...mapActions([
+      'deleteProductFromCart',
+    ]),
+    // eslint-disable-next-line no-unused-vars
+    deleteFromCart(index) {
+      this.deleteProductFromCart(index);
+    },
+  },
 };
 </script>
 
