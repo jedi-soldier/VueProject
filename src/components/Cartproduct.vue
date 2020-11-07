@@ -17,7 +17,7 @@
       <div class="cartHeader_text">shipping</div>
       <div class="productInCart_stats_shipping">free</div>
       <div class="cartHeader_text">Subtotal</div>
-      <div class="productInCart_stats_sum">$300</div>
+      <div class="productInCart_stats_sum">${{cartItemDat.price * cartItemDat.quant}}</div>
       <div class="cartHeader_text">ACTION</div>
       <div class="productInCart_delete"><i class="fa fa-times" aria-hidden="true"></i>
       </div>
@@ -25,7 +25,9 @@
     <div class="productInCart_stats_price bigProductStats">${{cartItemDat.price}}</div>
     <div class="productInCart_stats_volume bigProductStats">{{cartItemDat.quant}}</div>
     <div class="productInCart_stats_shipping bigProductStats">free</div>
-    <div class="productInCart_stats_sum bigProductStats">$300</div>
+    <div class="productInCart_stats_sum bigProductStats">
+      ${{cartItemDat.price * cartItemDat.quant}}
+    </div>
     <div
       class="productInCart_delete bigProductStats"
       @click="deleteFromCart"><i class="fa fa-times" aria-hidden="true"></i>
@@ -46,7 +48,7 @@ export default {
     },
   },
   mounted() {
-    this.$set(this.cartItemDat, 'quant', 1);
+  //  this.$set(this.cartItemDat, 'quant', 1);
   },
   methods: {
     deleteFromCart() {

@@ -26,14 +26,20 @@ export default new Vuex.Store({
           }
         });
         if (!goodinmycart) {
-          state.cart.push(product);
+          state.cart.push({ ...product, quant: 1 });
         }
       } else {
-        state.cart.push(product);
+        state.cart.push({ ...product, quant: 1 });
       }
     },
     REMOVE_CART: (state, index) => {
-      state.cart.splice(index, 1);
+      const prodForDel = state.cart[index];
+      if (prodForDel.quant > 1) {
+        // eslint-disable-next-line no-plusplus
+        prodForDel.quant--;
+      } else {
+        state.cart.splice(index, 1);
+      }
     },
   },
   actions: {

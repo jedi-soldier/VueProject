@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="right-block">
-      <p class="product-price">$</p>
+      <p class="product-price">{{cartItemDat.price * cartItemDat.quant}}$</p>
       <button class="del-btn" @click="deleteFromCart" >X</button>
     </div>
   </div>
@@ -30,9 +30,6 @@ export default {
     deleteFromCart() {
       this.$emit('deleteFromCart');
     },
-  },
-  mounted() {
-    this.$set(this.cartItemDat, 'quant', 1);
   },
 };
 </script>
@@ -88,4 +85,5 @@ img {
 .right-block{
   text-align: right;
 }
+
 </style>

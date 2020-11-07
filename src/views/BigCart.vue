@@ -2,7 +2,7 @@
   <div>
     <Arrivals></Arrivals>
     <Cartwrap :cart_data="CART"></Cartwrap>
-    <Purchase></Purchase>
+    <Purchase :cart_data="CART"></Purchase>
   </div>
 </template>
 

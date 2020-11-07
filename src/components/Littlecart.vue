@@ -1,7 +1,6 @@
 <template>
   <div>
-    <button class="btn-cart" type="button">Корзина</button>
-    <div class="cart-block" v-show="true">
+    <div class="cart-block">
       <p v-if="!CART.length">Корзина пуста</p>
       <Cartitem
         v-for='(cartItem, index) in cart_data'
@@ -35,6 +34,7 @@ export default {
     ...mapGetters([
       'CART',
     ]),
+
   },
   methods: {
     ...mapActions([
@@ -54,63 +54,44 @@ button:focus{
   outline: none;
 }
 
-.btn-cart{
-  background-color: #fafafa;
-  padding: 10px 20px;
-  border: 1px solid transparent;
-  color: #2f2a2d;
-  border-radius: 5px;
-  transition: all ease-in-out .4s;
-  cursor: pointer;
-}
-.btn-cart:hover{
-  background-color: transparent;
-  border-color: #fafafa;
-  color: #fafafa;
-}
-.btn-cart, .logo{
-  align-self: center;
-}
 p {
   margin: 0 0 5px 0;
 }
-
-img {
-  max-width: 100%;
-  height: auto
-}
-
 .cart-block{
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.62);
   border-radius: 5px;
   box-sizing: border-box;
-  right: 130px;
+  left: 68vw;
   top: 80px;
   position: absolute;
   background-color: white;
   padding: 20px;
   color: black;
   width: 300px;
+  z-index: 9999;
 }
 
-.cart-block:before{
-  content: '';
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: -10px;
-  right: 35px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid white;
+@media (max-width: 991px){
+  .cart-block {
+    left: 50vw;
+    top: 200px;
+  }
 }
-
-.cart-item {
-  display: flex;
-  justify-content: space-between;
+@media (max-width: 630px){
+  .cart-block {
+    left: 40vw;
+    top: 200px;
+  }
 }
-.cart-item:not(:last-child){
-  margin-bottom: 20px;
+@media (max-width: 520px){
+  .cart-block {
+    left: 20vw;
+  }
+}
+@media (max-width: 400px){
+  .cart-block {
+    left: 15px;
+  }
 }
 
 .cart-item img{

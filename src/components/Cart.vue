@@ -1,6 +1,6 @@
 <template>
   <div class="cartWrap">
-    <img class="headerCart" src="../assets/images/cart.png" alt="">
+    <img class="headerCart" src="../assets/images/cart.png" alt="Cart" @click="showCart">
     <router-link to="/cart"><button class="accountBtn">
       My Account
       <i class="fas fa-caret-down"></i>
@@ -11,12 +11,20 @@
 <script>
 export default {
   name: 'Cart',
+  methods: {
+    showCart() {
+      this.$emit('showCart');
+    },
+  },
 };
 </script>
 
 <style scoped>
 .headerCart{
   margin-bottom: -10px;
+}
+.headerCart:hover{
+  cursor: pointer;
 }
 .accountBtn {
   width: 130px;
@@ -27,7 +35,6 @@ export default {
   color: white;
   margin-left: 26px;
   outline: none;
-  border: none;
 }
 .accountBtn:hover {
   color: black;

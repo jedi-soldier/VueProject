@@ -10,10 +10,17 @@
             <SortSize></SortSize>
             <SortPrice></SortPrice>
           </div>
-          <SortName></SortName>
+          <div class="productsSorting">
+            <form action="#" class="sortingUnit">
+              <button
+                class="sortingTitle"
+                type="submit" @click="filtering(userSearch)">Sort!</button>
+              <input type="text" class="sortingSelect" v-model="userSearch" >
+            </form>
+          </div>
           <div class="products">
             <Good
-              v-for='good in PRODUCTS'
+              v-for='good in sorting'
               :key="good.id_product"
               v-bind:good_data="good"
               @addToCart="addToCart">
@@ -35,8 +42,6 @@ import SortSize from '@/components/SortSize';
 // eslint-disable-next-line import/extensions
 import SortPrice from '@/components/SortPrice';
 // eslint-disable-next-line import/extensions
-import SortName from '@/components/SortName';
-// eslint-disable-next-line import/extensions
 import Good from '@/components/Good';
 // eslint-disable-next-line import/extensions
 import Pagination from '@/components/Pagination';
@@ -48,7 +53,6 @@ export default {
   components: {
     Pagination,
     Good,
-    SortName,
     SortPrice,
     SortSize,
     SortTrend,
@@ -58,9 +62,17 @@ export default {
     ...mapGetters([
       'PRODUCTS',
     ]),
+    sorting() {
+      if (this.filtered.length) {
+        return this.filtered;
+      }
+      return this.PRODUCTS;
+    },
   },
   data() {
     return {
+      filtered: [],
+      userSearch: '',
     };
   },
   methods: {
@@ -68,11 +80,17 @@ export default {
       'fetchGoodData',
       'cartAdd',
     ]),
+    filtering(userSearch) {
+      this.filtered = [];
+      const regexp = new RegExp(userSearch, 'i');
+      this.filtered = this.PRODUCTS.filter((el) => regexp.test(el.product_name));
+    },
     addToCart(data) {
       this.cartAdd(data);
     },
   },
   mounted() {
+    this.filtering();
     this.fetchGoodData();
   },
 };
@@ -104,6 +122,45 @@ export default {
   .productsAdjustment {
     margin-top: 30px;
   }
+}
+
+.productsSorting {
+  min-height: 50px;
+  background-color: #f3f3f3;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 41px;
+  width: 35%;
+}
+.productsSorting .sortingUnit {
+  display: flex;
+}
+.productsSorting .sortingUnit:first-child {
+  margin-right: 10px;
+}
+@media (max-width: 326px) {
+  .productsSorting .sortingUnit:first-child {
+    margin-bottom: 10px;
+  }
+}
+.productsSorting .sortingUnit .sortingTitle,
+.productsSorting .sortingUnit .sortingSelect {
+  border: 1px solid #ebebeb;
+  background: white;
+  padding: 8px;
+  box-sizing: border-box;
+  height: 30px;
+  color: #6f6e6e;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 11px;
+}
+.productsSorting .sortingUnit .sortingTitle {
+  border-right: none;
+}
+.productsSorting .sortingUnit .sortingSelect i {
+  margin-left: 21px;
 }
 
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="modelWrap">
     <div class="modelSlider">
-      <img src="../assets/images/slider1.jpg" alt="sliderimage">
       <div class="modelSliderLeftArrow">
         <i class="fas fa-angle-left"></i>
       </div>
+      <img src="../assets/images/slider1.jpg" alt="sliderimage">
       <div class="modelSliderRightArrow">
         <i class="fas fa-angle-right"></i>
       </div>

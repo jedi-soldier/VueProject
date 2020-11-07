@@ -3,8 +3,8 @@
     <div class="container">
       <Logo></Logo>
       <Search></Search>
-      <Cart></Cart>
-      <Littlecart :cart_data="CART"></Littlecart>
+      <Cart @showCart="show = !show"></Cart>
+      <Littlecart :cart_data="CART" v-show="show"></Littlecart>
     </div>
   </header>
 </template>
@@ -24,6 +24,11 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'Header',
+  data() {
+    return {
+      show: false,
+    };
+  },
   components: {
     Littlecart,
     Cart,

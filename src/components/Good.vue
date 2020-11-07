@@ -7,8 +7,10 @@
       <img src="../assets/images/basket.svg" alt="basket">Add to&nbsp;Cart
     </button>
   </div>
-    <div class="tradeIndex_product__info"> <a href="#">{{good_data.product_name}}</a>
-        <router-link to="/catalog/1234"><div class="tradeIndex_product__info__price">
+    <div class="tradeIndex_product__info">
+        <router-link v-bind:to="{ name: 'Gooditem', params: { id: good_data.id_product}}">
+          <a href="">{{good_data.product_name}}</a>
+          <div class="tradeIndex_product__info__price">
           <p> {{good_data.price}} $</p></div>
         </router-link>
       </div>

@@ -1,8 +1,8 @@
 <template>
   <div class="total">
     <div class="totalwrap">
-      <div class="subTotal">Sub total <span>$900</span></div>
-      <div class="grandTotal">GRAND TOTAL <span>$900</span></div>
+      <div class="subTotal">Sub total <span>${{totalSum}}</span></div>
+      <div class="grandTotal">GRAND TOTAL <span>${{totalSum}}</span></div>
     </div>
     <div class="total_button_wrap">
       <button class="total_button">proceed to checkout</button>
@@ -11,8 +11,31 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Total',
+  props: {
+    cart_data: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
+  computed: {
+    ...mapGetters([
+      'CART',
+    ]),
+    totalSum() {
+      let result = 0;
+      // eslint-disable-next-line no-restricted-syntax
+      for (const item of this.CART) {
+        result += (item.price * item.quant);
+      }
+      return result;
+    },
+  },
 };
 </script>
 
